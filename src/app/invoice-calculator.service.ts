@@ -28,6 +28,10 @@ export class InvoiceCalculatorService {
   public CalculatePriceExclusiveVat(priceInclusiveVat: number, vatPercentage: number): number {
     vatPercentage = vatPercentage / 100 + 1;
     priceInclusiveVat = priceInclusiveVat / vatPercentage;
+
+    if (priceInclusiveVat < 0 || vatPercentage < 0) {
+      return 0;
+    }
     return priceInclusiveVat;
   }
 

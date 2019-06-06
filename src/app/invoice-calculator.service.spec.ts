@@ -7,6 +7,11 @@ describe('InvoiceCalculatorService', () => {
     expect(service.CalculatePriceExclusiveVat(12, 20)).toBe(10);
   });
 
+  it('should be 0 if CalculatePriceExclusiveVat get minus numbers', () => {
+    const service = new InvoiceCalculatorService(undefined);
+    expect(service.CalculatePriceExclusiveVat(-12, 20)).toBe(0);
+  });
+
   it('should calculate invoice correctly', () => {
     const dummyVat = 20;
     const dummyVatFactor = 1 + dummyVat / 100;
